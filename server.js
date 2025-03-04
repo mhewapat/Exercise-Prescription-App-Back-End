@@ -9,6 +9,7 @@ const authMiddleware = require("./middleware/authenticateMiddleware");
 const videoRoutes = require("./routes/videos");
 const authRoutes = require("./userRoutes/authentication");
 const progressTrackerRoutes = require("./routes/progressTracker");
+const translationService = require("./routes/translationService")
 
 // Load environment variables
 dotenv.config();
@@ -59,6 +60,7 @@ app.get("/api/protected", authMiddleware, (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/videos", videoRoutes);
 app.use("/progress", progressTrackerRoutes);
+app.use("/api/translation", translationService);
 
 // Fallback route for undefined endpoints
 app.use((req, res) => {
